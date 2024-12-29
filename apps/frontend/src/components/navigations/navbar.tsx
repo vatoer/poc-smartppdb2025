@@ -50,12 +50,14 @@ export const Navbar = () => {
             Tahun Pelajaran 2025 / 2026
           </h1>
           <div className="flex flex-col md:flex-row gap-2">
-            <Button
-              size={"lg"}
-              className="md:text-4xl font-bold md:p-6 bg-blue-700"
-            >
-              Daftar Sekarang
-            </Button>
+            <Link href="/buat-akun-baru#formulir">
+              <Button
+                size={"lg"}
+                className="md:text-4xl font-bold md:p-6 bg-blue-700"
+              >
+                Daftar Sekarang
+              </Button>
+            </Link>
             <Button
               size={"lg"}
               className="md:text-4xl font-bold md:p-6 bg-blue-600"
