@@ -18,17 +18,17 @@ import {
 
 export default function Page() {
   return (
-    <div className="flex p-10 pt-[48px] min-h-svh">
-      <div className="flex flex-row gap-10 w-full">
-        <div className="w-1/3">
+    <div className="flex p-2 lg:p-10 pt-[48px] min-h-svh mb-[200px]">
+      <div className="flex flex-col md:flex-row md:gap-2 lg:gap-4 w-full">
+        <div className="md:w-1/3">
           <Card className="w-full">
-            <CardHeader className="w-full bg-red-500 text-red-50 min-h-36">
+            <CardHeader className="w-full bg-red-500 text-red-50 lg:min-h-28 md:min-h-44">
               <CardTitle className="text-2xl">Sekolah Dasar (SD)</CardTitle>
               <CardDescription className="text-red-50">
                 Jalur Pendaftaran
               </CardDescription>
             </CardHeader>
-            <CardContent className="w-full p-2 gap-2 flex flex-col min-h-[550px]">
+            <CardContent className="w-full p-2 gap-2 flex flex-col md:min-h-[650px] lg:min-h-[550px]">
               <JalurPendaftaranItem>
                 Penyandang Disabilitas
               </JalurPendaftaranItem>
@@ -57,9 +57,9 @@ export default function Page() {
             </CardFooter>
           </Card>
         </div>
-        <div className="w-1/3">
+        <div className="md:w-1/3">
           <Card className="w-full">
-            <CardHeader className="w-full bg-blue-700 text-blue-50 min-h-36">
+            <CardHeader className="w-full bg-blue-500 text-red-50 lg:min-h-28 md:min-h-44">
               <CardTitle className="text-2xl">
                 Sekolah Menengah Pertama (SMP)
               </CardTitle>
@@ -67,7 +67,7 @@ export default function Page() {
                 Jalur Pendaftaran
               </CardDescription>
             </CardHeader>
-            <CardContent className="w-full p-2 gap-2 flex flex-col min-h-[550px]">
+            <CardContent className="w-full p-2 gap-2 flex flex-col md:min-h-[650px] lg:min-h-[550px]">
               <JalurPendaftaranItem>Prestasi Akademik</JalurPendaftaranItem>
               <JalurPendaftaranItem>Prestasi Non Akademik</JalurPendaftaranItem>
               <JalurPendaftaranItem>
@@ -99,9 +99,9 @@ export default function Page() {
             </CardFooter>
           </Card>
         </div>
-        <div className="w-1/3">
+        <div className="md:w-1/3">
           <Card className="w-full">
-            <CardHeader className="w-full bg-gray-400 text-gray-50 min-h-36">
+            <CardHeader className="w-full bg-gray-400 text-gray-50 lg:min-h-28 md:min-h-44">
               <CardTitle className="text-2xl">
                 Sekolah Menengah Atas (SMA)
               </CardTitle>
@@ -109,7 +109,7 @@ export default function Page() {
                 Jalur Pendaftaran
               </CardDescription>
             </CardHeader>
-            <CardContent className="w-full p-2 gap-2 flex flex-col min-h-[550px]">
+            <CardContent className="w-full p-2 gap-2 flex flex-col md:min-h-[650px] lg:min-h-[550px]">
               <JalurPendaftaranItem>Prestasi Akademik</JalurPendaftaranItem>
               <JalurPendaftaranItem>Prestasi Non Akademik</JalurPendaftaranItem>
               <JalurPendaftaranItem>

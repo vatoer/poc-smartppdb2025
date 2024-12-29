@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Menu from "./menu";
 import { MenuMobile } from "./menu-mobile";
+import NavbarMenuMobile from "./navbar-menu-mobile";
 
 export const Navbar = () => {
   const navbarRef = useRef<HTMLDivElement>(null); // Reference to the navbar
@@ -41,18 +42,24 @@ export const Navbar = () => {
 
         {/* Content */}
         <div className="relative flex flex-col items-center justify-center h-full text-white gap-2">
-          <h1 className="text-3xl font-bold drop-shadow-lg bg-white text-gray-900 p-4 rounded-md">
+          <h1 className="md:text-3xl font-bold drop-shadow-lg bg-white text-gray-900 p-4 rounded-md">
             Penerimaan Peserta Didik Baru
           </h1>
 
-          <h1 className="text-lg font-bold drop-shadow-lg bg-white text-gray-900 p-2 rounded-md">
+          <h1 className="md:text-lg font-bold drop-shadow-lg bg-white text-gray-900 p-2 rounded-md">
             Tahun Pelajaran 2025 / 2026
           </h1>
-          <div className="flex flex-row gap-2">
-            <Button size={"lg"} className="text-4xl font-bold p-6 bg-blue-700">
+          <div className="flex flex-col md:flex-row gap-2">
+            <Button
+              size={"lg"}
+              className="md:text-4xl font-bold md:p-6 bg-blue-700"
+            >
               Daftar Sekarang
             </Button>
-            <Button size={"lg"} className="text-4xl font-bold p-6 bg-blue-600">
+            <Button
+              size={"lg"}
+              className="md:text-4xl font-bold md:p-6 bg-blue-600"
+            >
               Login
             </Button>
           </div>
@@ -67,7 +74,7 @@ export const Navbar = () => {
         }`}
       >
         <div className="flex flex-row gap-2">
-          <MenuMobile />
+          {/* <MenuMobile /> */}
           <div className="flex items-center">
             <Link href="/" className="whitespace-nowrap">
               <span>Smart PPDB</span>
@@ -77,6 +84,7 @@ export const Navbar = () => {
         </div>
         <div id="userbutton" className="rounded-full bg-blue-500 h-8 w-8"></div>
       </nav>
+      <NavbarMenuMobile />
     </div>
   );
 };
