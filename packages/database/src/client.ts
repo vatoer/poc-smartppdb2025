@@ -9,4 +9,4 @@ export const dbSmartppdb = global.prismaDbSmartppdb || new PrismaClient();
 if (process.env.NODE_ENV !== "production")
   global.prismaDbSmartppdb = dbSmartppdb;
 
-export { Prisma };
+export { Prisma, PrismaClient };
