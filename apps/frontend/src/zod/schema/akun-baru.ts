@@ -1,7 +1,9 @@
 import { z } from "zod";
 
 // Define the enum for jenjang
-export const JenjangEnum = z.enum(["SD", "SMP", "SMA"]);
+export const JenjangEnum = z.enum(["SD", "SMP", "SMA"], {
+  message: "Jenjang harus dipilih antara SD, SMP, atau SMA",
+});
 export const StatusDomisiliEnum = z.enum([
   "SESUAI_KK",
   "SURAT_PINDAH",
@@ -10,20 +12,34 @@ export const StatusDomisiliEnum = z.enum([
   "LAINNYA",
 ]);
 
-export const akunBaruSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8),
-  passwordConfirmation: z.string(),
-});
+export const akunBaruSchema = z
+  .object({
+    nama: z.string().min(3, { message: "Nama minimal 3 karakter" }).max(255),
+    email: z.string().email({ message: "Email tidak valid" }),
+    password: z.string().min(8, { message: "Password minimal 8 karakter" }),
+    passwordConfirmation: z.string(),
+  })
+  .refine((data) => data.password === data.passwordConfirmation, {
+    message: "Password dan konfirmasi password tidak sama",
+    path: ["passwordConfirmation"],
+  });
 
 export type AkunBaru = z.infer<typeof akunBaruSchema>;
 
-export const akunBaruStep0Schema = z.object({
-  nama: z.string().min(3).max(255),
-  nisn: z.string().length(10).optional(),
-  nik: z.string().length(16),
-  jenjang: JenjangEnum,
-});
+export const akunBaruStep0Schema = z
+  .object({
+    nama: z.string().min(3, { message: "Nama minimal 3 karakter" }).max(255),
+    nisn: z.string().optional(),
+    nik: z.string().length(16, { message: "NIK harus 16 digit" }),
+    jenjang: JenjangEnum,
+    email: z.string().email({ message: "Email tidak valid" }),
+    password: z.string().min(8, { message: "Password minimal 8 karakter" }),
+    passwordConfirmation: z.string(),
+  })
+  .refine((data) => data.password === data.passwordConfirmation, {
+    message: "Password dan konfirmasi password tidak sama",
+    path: ["passwordConfirmation"],
+  });
 
 export type AkunBaruStep0 = z.infer<typeof akunBaruStep0Schema>;
 

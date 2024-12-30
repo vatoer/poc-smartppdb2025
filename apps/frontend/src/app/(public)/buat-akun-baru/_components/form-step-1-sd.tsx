@@ -1,5 +1,6 @@
 "use client";
 
+import MapDomisili, { MarkerPosition } from "@/components/gmap/map-domisili";
 import {
   AkunBaruJenjangSDStep1,
   akunBaruJenjangSDStep1Schema,
@@ -44,6 +45,10 @@ const FormStep1SD = ({ step, prevStep, nextStep }: FormStep1SDProps) => {
   const onSubmit = (data: AkunBaruJenjangSDStep1) => {
     console.log(data);
     nextStep();
+  };
+
+  const handleMarkerDragEnd = (markerPosition: MarkerPosition) => {
+    console.log(markerPosition);
   };
 
   const onPrev = () => {
@@ -97,6 +102,9 @@ const FormStep1SD = ({ step, prevStep, nextStep }: FormStep1SDProps) => {
               </FormItem>
             )}
           />
+
+          <MapDomisili onMarkerDragEnd={handleMarkerDragEnd} />
+
           <div
             className={cn(
               "flex flex-col sm:flex-row  sm:justify-end gap-2 mt-6"

@@ -1,6 +1,6 @@
 "use client";
 
-import { AkunBaruStep0, akunBaruStep0Schema } from "@/zod/schema/akun-baru";
+import { AkunBaru, akunBaruSchema } from "@/zod/schema/akun-baru";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@workspace/ui/components/button";
 import {
@@ -15,19 +15,16 @@ import { Input } from "@workspace/ui/components/input";
 import { cn } from "@workspace/ui/lib/utils";
 import { useForm } from "react-hook-form";
 
-interface FormStep0Props {
+interface FormRegisterProps {
   step: number;
   nextStep: () => void;
 }
 
-const FormStep0 = ({ step, nextStep }: FormStep0Props) => {
-  const form = useForm<AkunBaruStep0>({
-    resolver: zodResolver(akunBaruStep0Schema),
+const FormRegister = ({ step, nextStep }: FormRegisterProps) => {
+  const form = useForm<AkunBaru>({
+    resolver: zodResolver(akunBaruSchema),
     defaultValues: {
       nama: "",
-      nisn: "",
-      nik: "",
-      jenjang: "SD",
       email: "",
       password: "",
       passwordConfirmation: "",
@@ -39,7 +36,7 @@ const FormStep0 = ({ step, nextStep }: FormStep0Props) => {
     formState: { errors, isSubmitting, isValid },
   } = form;
 
-  const onSubmit = (data: AkunBaruStep0) => {
+  const onSubmit = (data: AkunBaru) => {
     console.log(data);
     nextStep();
   };
@@ -51,20 +48,7 @@ const FormStep0 = ({ step, nextStep }: FormStep0Props) => {
   return (
     <div>
       <Form {...form}>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 pb-24">
-          <FormField
-            control={form.control}
-            name="nisn"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>NISN</FormLabel>
-                <FormControl>
-                  <Input placeholder="10 digit" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
           <FormField
             control={form.control}
             name="nama"
@@ -78,40 +62,7 @@ const FormStep0 = ({ step, nextStep }: FormStep0Props) => {
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="nik"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>NIK</FormLabel>
-                <FormControl>
-                  <Input placeholder="16 digit" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="jenjang"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Jenjang</FormLabel>
-                <FormControl>
-                  <select
-                    {...field}
-                    className="bg-background w-full border border-gray-300 rounded p-2"
-                  >
-                    <option value="">Pilih Jenjang</option>
-                    <option value="SD">SD/MI Sederajat</option>
-                    <option value="SMP">SMP/MTs Sederajat</option>
-                    <option value="SMA">SMA/MA Sederajat </option>
-                  </select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+
           <FormField
             control={form.control}
             name="email"
@@ -155,12 +106,10 @@ const FormStep0 = ({ step, nextStep }: FormStep0Props) => {
               </FormItem>
             )}
           />
-          <div
-            className={cn(
-              "flex flex-col sm:flex-row  sm:justify-end gap-2 mt-6"
-            )}
-          >
-            <Button type="submit">Buat Akun</Button>
+          <div className="flex flex-col sm:flex-row  sm:justify-end gap-2 pt-6">
+            <Button type="submit" size={"lg"} className="w-full">
+              Buat Akun
+            </Button>
           </div>
         </form>
       </Form>
@@ -168,4 +117,4 @@ const FormStep0 = ({ step, nextStep }: FormStep0Props) => {
   );
 };
 
-export default FormStep0;
+export default FormRegister;
