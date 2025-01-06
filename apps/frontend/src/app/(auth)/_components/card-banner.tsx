@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@workspace/ui/components/card";
+import Image from "next/image";
 
 const listOfMessages = [
   "Cara mudah mendaftar sekolah secara online",
@@ -28,10 +29,10 @@ export const CardBanner = () => {
 
   return (
     <Card
-      className="w-full md:w-[600px] h-full bg-blue-800 text-white bg-cover"
+      className="w-full md:w-[600px] h-[600px] bg-blue-800 text-white bg-cover"
       style={{
         backgroundImage:
-          "linear-gradient(rgba(37, 99, 235, 0.7), rgba(37, 99, 235, 0.7)), url('https://source.unsplash.com/random?school')",
+          "linear-gradient(rgba(37, 99, 235, 0.7), rgba(37, 99, 235, 0.7)), url('/hero/hero1.jpg')",
       }}
     >
       <CardHeader>
@@ -40,7 +41,7 @@ export const CardBanner = () => {
           {randomMessage}
         </CardDescription>
       </CardHeader>
-      <CardContent></CardContent>
+      <CardContent className="flex justify-center h-[300px]"></CardContent>
       <CardFooter className="flex justify-between">
         <Button variant="ghost">Pelajari Lebih Lanjut</Button>
       </CardFooter>

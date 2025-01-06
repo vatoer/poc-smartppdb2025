@@ -1,7 +1,7 @@
 "use client";
 import { FormError } from "@/app/(auth)/_components/form-error";
 import InputForm from "@/app/(auth)/_components/input-form";
-import { login } from "@/app/(auth)/loginx/_actions/login";
+import { login } from "@/app/(auth)/login/_actions/login";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema, TLogin } from "@workspace/database/zod/schema/login";
 import { Button, buttonVariants } from "@workspace/ui/components/button";
@@ -41,14 +41,14 @@ const LoginForm = () => {
   };
 
   return (
-    <div className=" w-[300px] p-2 flex justify-center items-center ">
+    <div className="w-full p-2 flex justify-center items-center ">
       <div className="flex flex-col items-center gap-2 mb-4 w-full">
         <Image
           src="/logo.png"
           alt="Logo"
           width={56}
           height={56}
-          className="mx-auto rounded-full border-8 border-blue-600/80 md:block m-4"
+          className="mx-auto rounded-full border-8 p-0 border-blue-600/90 shadow-lg md:block m-4"
         />
 
         <form
@@ -84,10 +84,10 @@ const LoginForm = () => {
               atau
             </p>
           </div>
-          <GoogleSignInButton />
+          <GoogleSignInButton text="Login dengan Google" />
           <div>
             <Link
-              href="/buat-akun"
+              href="/buat-akun-baru"
               className={buttonVariants({
                 variant: "link",
                 className: "gap-1 w-full text-blue-500",

@@ -26,20 +26,13 @@ export const akunBaruSchema = z
 
 export type AkunBaru = z.infer<typeof akunBaruSchema>;
 
-export const akunBaruStep0Schema = z
-  .object({
-    nama: z.string().min(3, { message: "Nama minimal 3 karakter" }).max(255),
-    nisn: z.string().optional(),
-    nik: z.string().length(16, { message: "NIK harus 16 digit" }),
-    jenjang: JenjangEnum,
-    email: z.string().email({ message: "Email tidak valid" }),
-    password: z.string().min(8, { message: "Password minimal 8 karakter" }),
-    passwordConfirmation: z.string(),
-  })
-  .refine((data) => data.password === data.passwordConfirmation, {
-    message: "Password dan konfirmasi password tidak sama",
-    path: ["passwordConfirmation"],
-  });
+export const akunBaruStep0Schema = z.object({
+  nama: z.string().min(3, { message: "Nama minimal 3 karakter" }).max(255),
+  nisn: z.string().optional(),
+  nik: z.string().length(16, { message: "NIK harus 16 digit" }),
+  nomorKK: z.string().length(16, { message: "Nomor KK harus 16 digit" }),
+  jenjang: JenjangEnum,
+});
 
 export type AkunBaruStep0 = z.infer<typeof akunBaruStep0Schema>;
 

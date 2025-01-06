@@ -1,12 +1,12 @@
-import { Button } from "@workspace/ui/components/button";
-
-import { dbSmartppdb } from "@workspace/database/client";
-
+import { auth } from "@/app/(auth)/auth";
 import { getSiswa } from "@workspace/database/data/siswa";
+import { Button } from "@workspace/ui/components/button";
 
 const d = await getSiswa("1");
 
 import JalurPendaftaranItem from "@/components/jalur-pendaftaran/item";
+import InfografisTahapPendaftaran from "@/components/tahapan/infografis-tahap-pendaftaran";
+import UserAvatar from "@/components/user/user-avatar";
 import {
   Card,
   CardContent,
@@ -16,9 +16,12 @@ import {
   CardTitle,
 } from "@workspace/ui/components/card";
 
-export default function Page() {
+export default async function Page() {
+  const session = await auth();
+
   return (
-    <div className="flex p-2 lg:p-10 pt-[48px] min-h-svh mb-[200px]">
+    <div className="flex flex-col p-2 lg:p-4 md:pt-2 min-h-svh mb-[200px]">
+      <InfografisTahapPendaftaran />
       <div className="flex flex-col md:flex-row md:gap-2 lg:gap-4 w-full">
         <div className="md:w-1/3">
           <Card className="w-full">

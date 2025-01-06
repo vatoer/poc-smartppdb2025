@@ -1,4 +1,5 @@
 import HeroHeader from "@/components/navigations/hero-header";
+import { Navbar } from "@/components/navigations/navbar-fixed";
 import { SessionProvider } from "next-auth/react";
 
 export default function PublicLayout({
@@ -10,10 +11,10 @@ export default function PublicLayout({
     <section>
       <header>
         <SessionProvider>
-          <HeroHeader />
+          <Navbar />
         </SessionProvider>
       </header>
-      <main>{children}</main>
+      <main className="pt-[48px] h-min-[calc(100vh-48px)] ">{children}</main>
       <footer>{/* Footer content goes here */}</footer>
     </section>
   );

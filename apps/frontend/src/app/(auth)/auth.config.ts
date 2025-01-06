@@ -13,7 +13,6 @@ import { LoginSchema } from "@workspace/database/zod/schema/login";
 
 export default {
   providers: [
-    Google,
     Credentials({
       async authorize(credentials) {
         const validatedCredentials = LoginSchema.safeParse(credentials);
@@ -39,5 +38,6 @@ export default {
         return null;
       },
     }),
+    Google,
   ],
 } satisfies NextAuthConfig;

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
+import { ContainerThemeToggle } from "@workspace/ui/components/container-theme-toggle";
 import "@workspace/ui/globals.css";
 import "@workspace/ui/google.css";
 import { NextTheme } from "../components/next-theme";
@@ -31,7 +32,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextTheme>{children}</NextTheme>
+        <NextTheme>
+          {children}
+          <ContainerThemeToggle />
+        </NextTheme>
       </body>
     </html>
   );

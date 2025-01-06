@@ -28,9 +28,6 @@ const FormStep0 = ({ step, nextStep }: FormStep0Props) => {
       nisn: "",
       nik: "",
       jenjang: "SD",
-      email: "",
-      password: "",
-      passwordConfirmation: "",
     },
   });
 

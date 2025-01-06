@@ -6,10 +6,16 @@ import authConfig from "./auth.config";
 import { dbAuth } from "@workspace/database/db-auth";
 
 export const nextAuth = NextAuth({
+  debug: true,
   session: { strategy: "jwt" },
   secret: process.env.AUTH_SECRET,
   ...authConfig,
 });
 
-export const auth: NextAuthResult["auth"] = nextAuth.auth;
+export const {
+  handlers: { GET, POST },
+  signOut,
+  auth,
+} = nextAuth;
+
 export const signIn: NextAuthResult["signIn"] = nextAuth.signIn;
