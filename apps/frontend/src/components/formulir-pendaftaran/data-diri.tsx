@@ -46,14 +46,17 @@ const FormDataDiri = ({ nextStep = () => {} }: FormDataDiriProps) => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col w-full items-center">
       <Form {...form}>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 pb-24">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="w-full space-y-2 pb-24"
+        >
           <FormField
             control={form.control}
             name="nisn"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-full">
                 <FormLabel>NISN</FormLabel>
                 <FormControl>
                   <Input placeholder="10 digit" {...field} />

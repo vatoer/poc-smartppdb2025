@@ -14,7 +14,9 @@ export default function PublicLayout({
           <Navbar />
         </SessionProvider>
       </header>
-      <main className="pt-[48px] h-min-[calc(100vh-48px)] ">{children}</main>
+      <main className="pt-[48px] h-min-[calc(100vh-48px)] justify-center items-center w-full border border-gray-400">
+        {children}
+      </main>
       <footer>{/* Footer content goes here */}</footer>
     </section>
   );
