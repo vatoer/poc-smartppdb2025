@@ -1,7 +1,11 @@
 import FormDataDiri from "@/components/formulir-pendaftaran/data-diri";
 
 export const FormContainer = () => {
-  return <div>form disini</div>;
+  return (
+    <div>
+      <FormDataDiri />
+    </div>
+  );
 };
 
 export default FormContainer;
