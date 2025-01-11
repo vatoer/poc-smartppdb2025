@@ -1,16 +1,9 @@
-import FormContainer from "./_components/form-container";
-
-export const PesertaDidikProfile = () => {
+const ProfilePage = () => {
   return (
-    <div
-      id="formulir"
-      className="flex flex-col w-full justify-center pb-[48px]"
-    >
-      <div className="mt-4 w-full border border-gray-200 p-4 rounded-lg shadow-md">
-        <FormContainer />
-      </div>
+    <div>
+      <h1>Profile Page</h1>
     </div>
   );
 };
 
-export default PesertaDidikProfile;
+export default ProfilePage;
