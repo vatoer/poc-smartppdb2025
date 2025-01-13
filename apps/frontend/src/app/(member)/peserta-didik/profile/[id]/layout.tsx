@@ -14,22 +14,16 @@ export default function PublicLayout({
           <h1 className="md:text-lg">Profile Peserta Didik</h1>
         </div>
         <div className="flex flex-row mt-2 w-full p-4 ">
-          <div className="hidden sm:block sm:w-1/3 md:w-1/5">
+          <div className="hidden sm:block sm:w-1/3 md:w-1/3">
             <ul className="flex flex-col gap-2">
               <li>
-                <a href="#data-diri">Data Diri</a>
+                <a href="data-diri">Data Diri</a>
               </li>
               <li>
-                <a href="#data-ayah">Data Ayah</a>
+                <a href="data-orang-tua">Data Orang Tua</a>
               </li>
               <li>
-                <a href="#data-ibu">Data Ibu</a>
-              </li>
-              <li>
-                <a href="#data-wali">Data Wali</a>
-              </li>
-              <li>
-                <a href="#data-sekolah">Data Sekolah</a>
+                <a href="data-sekolah-asal">Data Sekolah Asal</a>
               </li>
               <li>
                 <a href="#data-pendaftaran">Data Pendaftaran</a>

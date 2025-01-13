@@ -1,0 +1,9 @@
+id,rentang,minimal,maksimal
+0,"Tidak Berpenghasilan",NULL,0
+1,"Kurang dari Rp 1 juta",0,1000000
+2,"Rp 1 juta - Rp 2 juta",1000000,2000000
+3,"Rp 2 juta - Rp 3 juta",2000000,3000000
+5,"Rp 3 juta - Rp 5 juta",3000000,5000000
+10,"Rp 5 juta - Rp 10 juta",5000000,10000000
+20,"Rp 10 juta - Rp 20 juta",10000000,20000000
+25,"Lebih dari Rp 20 juta",20000000,NULL

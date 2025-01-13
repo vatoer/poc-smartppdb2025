@@ -1,8 +1,8 @@
 import { z } from "zod";
 
 export enum JenisKelamin {
-  "Laki-laki" = "Laki-laki",
-  "Perempuan" = "Perempuan",
+  LakiLaki = "Laki-laki",
+  Perempuan = "Perempuan",
 }
 
 export const jenisKelaminSchema = z.nativeEnum(JenisKelamin, {
@@ -26,6 +26,7 @@ export enum JenjangPendidikan {
   D1 = "D1",
   D2 = "D2",
   D3 = "D3",
+  D4 = "D4",
   S1 = "S1",
   S2 = "S2",
   S3 = "S3",
@@ -44,15 +45,16 @@ export enum Pekerjaan {
   "Buruh" = "Buruh",
   "Wiraswasta" = "Wiraswasta",
   "Wirausaha" = "Wirausaha",
-  "Pegawai Swasta" = "Pegawai Swasta",
+  "PegawaiSwasta" = "Pegawai Swasta",
+  "PegawaiBUMN" = "Pegawai BUMN",
   "PNS" = "PNS",
   "TNI" = "TNI",
   "POLRI" = "POLRI",
-  "Ibu Rumah Tangga" = "Ibu Rumah Tangga",
-  "Pelajar/Mahasiswa" = "Pelajar/Mahasiswa",
+  "IbuRumahTangga" = "Ibu Rumah Tangga",
+  "PelajarMahasiswa" = "Pelajar/Mahasiswa",
   "Pensiunan" = "Pensiunan",
-  "Tidak Bekerja" = "Tidak Bekerja",
-  "Lainnya" = "Lainnya",
+  "TidakBekerja" = "Tidak Bekerja",
+  "Lainnya" = "Lain-lain",
 }
 
 export const pekerjaanSchema = z.nativeEnum(Pekerjaan, {
@@ -64,12 +66,18 @@ export const ortuSchema = z.object({
   nik: z.string().min(16).max(16),
   kk: z.string().min(16).max(16),
   jenisKelamin: jenisKelaminSchema,
-  tahunLahir: z.coerce.number().min(1900).max(2010),
-  tahunWafat: z.coerce.number().optional(),
+  tahunWafat: z.coerce.number().optional().nullable(),
   jenjangPendidikan: jenjangPendidikanSchema,
   pekerjaan: pekerjaanSchema,
   penghasilan: z.coerce.number().default(0).optional(),
 });
+
+export const dataOrangTuaSchema = z.object({
+  ayah: ortuSchema,
+  ibu: ortuSchema,
+});
+
+export type DataOrangTua = z.infer<typeof dataOrangTuaSchema>;
 
 export type Ortu = z.infer<typeof ortuSchema>;
 
@@ -104,7 +112,7 @@ export const golonganDarahSchema = z.nativeEnum(GolonganDarah, {
 });
 
 export const StatusDomisiliEnum = z.enum([
-  "SESUAI_kk",
+  "SESUAI_KK",
   "SURAT_PINDAH",
   "SESUAI_DOMISILI_PONDOK",
   "SESUAI_DOMISILI_PANTIASUHAN",
@@ -124,7 +132,7 @@ export const domisiliSchema = z.object({
 
 export type Domisili = z.infer<typeof domisiliSchema>;
 
-export const dataDiriSchema = z.object({
+export const baseSchema = z.object({
   nama: z.string().min(3).max(255),
   kk: z.string().min(16).max(16).optional(),
   nik: z.string().min(16).max(16).optional(),
@@ -137,9 +145,12 @@ export const dataDiriSchema = z.object({
   jenjangDikdasmen: jenjangDikdasmenSchema,
 });
 
+// Merging the schemas
+export const dataDiriSchema = baseSchema.merge(domisiliSchema);
+
 export type DataDiri = z.infer<typeof dataDiriSchema>;
 
-export const sekolahAsalSchema = z.object({
+export const dataSekolahAsalSchema = z.object({
   NPSN: z
     .string()
     .min(1, {
@@ -165,4 +176,4 @@ export const sekolahAsalSchema = z.object({
   tahunLulus: z.coerce.number().optional(),
 });
 
-export type SekolahAsal = z.infer<typeof sekolahAsalSchema>;
+export type DataSekolahAsal = z.infer<typeof dataSekolahAsalSchema>;

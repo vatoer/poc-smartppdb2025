@@ -329,13 +329,16 @@ model VerifikasiDokumenJalurPendaftaran {
 }
 
 model Ortu {
-  id          String   @id @default(cuid())
-  nama        String   @db.VarChar
-  nik         String?  @db.Char(16)
-  tahunLahir  Int?     @map("tahun_lahir")
-  pendidikan  String?  @db.VarChar
-  pekerjaan   String?  @db.VarChar
-  penghasilan Decimal? @db.Decimal
+  id           String   @id @default(cuid())
+  nama         String   @db.VarChar
+  nik          String?  @db.Char(16)
+  kk           String?  @db.Char(16)
+  tahunLahir   Int?     @map("tahun_lahir")
+  tahunWafat   Int?     @map("tahun_wafat")
+  jenisKelamin String   @map("jenis_kelamin")
+  pendidikan   String?  @db.VarChar
+  pekerjaan    String?  @db.VarChar
+  penghasilan  Decimal? @db.Decimal
 
   createdAt DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
   updatedAt DateTime? @default(now()) @map("updated_at") @db.Timestamp(6)
@@ -380,4 +383,53 @@ model Siswa {
   Pendaftaran Pendaftaran[]
 
   @@map("siswa")
+}
+
+model Provinsi {
+  id            String          @id
+  nama          String          @db.VarChar
+  kotaKabupaten KotaKabupaten[]
+
+  @@map("provinsi")
+}
+
+model KotaKabupaten {
+  id         String @id
+  provinsiId String @map("provinsi_id")
+  nama       String @db.VarChar
+
+  provinsi  Provinsi    @relation(fields: [provinsiId], references: [id])
+  kecamatan Kecamatan[]
+
+  @@map("kota_kabupaten")
+}
+
+model Kecamatan {
+  id              String @id
+  kotaKabupatenId String @map("kota_kabupaten_id")
+  nama            String @db.VarChar
+
+  kotaKabupaten KotaKabupaten   @relation(fields: [kotaKabupatenId], references: [id])
+  desaKelurahan DesaKelurahan[]
+
+  @@map("kecamatan")
+}
+
+model DesaKelurahan {
+  id          String @id
+  kecamatanId String @map("kecamatan_id")
+  nama        String @db.VarChar
+
+  kecamatan Kecamatan @relation(fields: [kecamatanId], references: [id])
+
+  @@map("desa_kelurahan")
+}
+
+model RentangPenghasilan {
+  id       String  @id
+  rentang  String  @db.VarChar
+  minimal  Decimal @db.Decimal
+  maksimal Decimal @db.Decimal
+
+  @@map("rentang_pendapatan")
 }
